@@ -1,0 +1,431 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    </head>
+    <body>
+
+        <!--
+            1. Realizar una función que indicando un texto y un carácter 
+            (ambos obligatorios, comprobar que el segundo parámetro es realmente un único carácter),
+             nos diga cuántas veces aparece el carácter en el texto.
+        -->
+
+        <script>
+
+        function cuantasVecesAparece(cadena, caracter){
+
+            //Contamos las letras que se pasan por la función
+            var indices = [];
+
+            for(var i = 0; i < cadena.length; i++) {
+
+                if (cadena[i].toLowerCase() === caracter){
+
+                    //Expulsamos el carácter que corresponde al parámetro
+                     indices.push(i);
+                }
+            }
+                return indices.length;
+        }
+
+        document.write(cuantasVecesAparece("Supercalifragilisticoespialidoso.", "i"));
+
+        </script>
+
+        <br><br>
+
+        <!--
+            2. Escribir una función que acepte al menos un argumento 
+            (el primer argumento debe ser obligatorio, mostrar un mensaje de error si no se indica,
+             luego se pueden indicar tantos argumentos como desee el usuario) y que devuelva la suma
+              y la media de todos los elementos. Comprobar que todos los argumentos sean números e
+               ignorar los que no lo sean, mostrando un aviso (por ejemplo: 
+               ¡AVISO! El argumento número 3 "Hola" no es un número, lo ignoramos").
+        -->
+
+        <script>
+
+            //Declaro variables:
+            var lista = [];
+            var args = 0;
+            var numeros;
+            var suma=0;
+            var media=0;
+
+            do{
+                //Cuento
+                args++;
+
+                //Pido números
+                numeros = parseInt(prompt("(0 para salir )Introduzca el "+args+" número: "));
+
+                //Añado esos números al array
+                if(numeros!=0)
+                {
+                    lista.push(numeros);
+                }
+                
+
+            }while(numeros!=0);
+
+            //Sumamos las notas
+            for(var i=0; i<lista.length;i++)
+            {
+                suma += lista[i];
+            }
+
+            //Mostramos
+            document.write("Suma total: "+suma+" Media: "+(suma/lista.length));
+
+            /* Recorrer un array
+            for(var i=0; i<lista.length;i++)
+            {
+                document.write(lista[i]);
+            }*/
+
+
+        </script>
+
+        <br><br>
+
+        <!--
+            3. Realizar una función en JS que dado un DNI (comprobar que es un número entre 0 y 99999999),
+             devuelva la letra asociado al mismo. Esta letra se calcula como el módulo (resto) de
+              la división del número del DNI entre 23, y a partir del resto se escoge una de la
+             siguientes letras según la posición: TRWAGMYFPDXBNJZSQVHLCKET. Por ejemplo, para
+              el DNI 12345678, al dividir entre 23 se obtiene como resto 14, por lo que le corresponde la
+             letra 'Z', siendo el DNI correcto 12345678Z.
+        -->
+
+        <script>
+
+            //Declaramos el dni
+            var dni = 64253469;
+
+            function nif(dni)
+            {
+                //Creamos la lista de letras
+                var secuencia = 'TRWAGMYFPDXBNJZSQVHLCKE';
+
+                //Dividimos entre 23 y nos quedamos con el resto para saber la posición
+                var numero = dni % 23;
+
+                //Buscamos la letra que necesitamos
+                var letra = secuencia.charAt(numero);
+
+                return letra;
+            }
+
+            document.write("El DNI "+dni+" tiene letra "+nif(dni));
+
+        </script>
+
+        <br><br>
+
+        <!--
+            4. Crear una función que genere un array aleatorio, usando 3 parámetros:
+             número de elementos (por defecto 10, valor mínimo del elemento
+              (por defecto 100), valor máximo (por defecto 200).
+        -->
+
+        <script>
+
+            function arrayRandom(elementos)
+            {
+                //Dimensiones del array
+                var lista = new Array(elementos);
+
+                //Rellenamos
+                for(var i=0;i<elementos;i++)
+                {
+                    lista[i] = parseInt(Math.random() * (200 - 100) + 100);
+                }
+
+                //Enviamos
+                return lista;
+
+            }
+
+            document.write(arrayRandom(10));
+
+        </script>
+
+        <br><br>
+
+        <!--
+            5. Usando la función del ejercicio 1, generar un array aleatorio de
+             20 elementos entre 20 y 100 y luego ordenarlo.
+        -->
+
+        <script>
+
+            function arrayOrdenado(elementos)
+            {
+                //Dimensiones del array
+                var lista = new Array(elementos);
+
+                //Rellenamos
+                for(var i=0;i<elementos;i++)
+                {
+                    lista[i] = parseInt(Math.random() * (100 - 20) + 20);
+                }
+
+                //Enviamos ordenado
+                return lista.sort();
+
+            }
+
+            document.write(arrayOrdenado(20));
+
+        </script>
+        <br><br>
+
+        <!--
+            6. Crear una función que mezcle los elementos de un array en orden aleatorio.
+             Probar con el array ordenado creado en el ejercicio anterior
+        -->
+
+        <script>
+
+            function listaNumeros(elementos)
+            {
+                //Dimensiones del array
+                var lista = new Array(elementos);
+
+                //Rellenamos
+                for(var i=0;i<elementos;i++)
+                {
+                    lista[i] = parseInt(Math.random() * (10 - 1) + 1);
+                }
+
+                //Enviamos (va a salir desordenado)
+                return lista;
+
+            }
+
+            document.write(listaNumeros(10));
+
+        </script>
+
+    <!-- 
+        7. Recorrer un array aleatorio generado con la función del ejercicio 1
+         (15 elementos entre -10 y 20) y para cada elemento x, gestionar un nuevo array de la siguiente forma:
+            x <= -5: Eliminar el primer elemento del array
+            -5 < x <= 0: Eliminar el último elemento del array
+            0 < x <=  10: Añadir x al principio del array
+            10 < x <=  10: Añadir x al final del array
+            Mostrar un mensaje de texto para cada número indicando el valor de x, la
+             operación realizada (eliminar o añadir, al principio o al final), el número añadido/eliminado
+              y el tamaño del array tras realizar la operación
+    -->
+
+    <script>
+
+            function listaGestion(elementos)
+            {
+                //Dimensiones del array
+                var lista = new Array(elementos);
+                var eliminados = new Array(elementos);
+
+                //Rellenamos
+                for(var i=0;i<elementos;i++)
+                {
+                    var numAleatorio = parseInt(Math.random() * (20 - (-10)) + (-10)); //Máximos y mínimos.
+                    lista[i] = numAleatorio;
+
+                    //Restricciones
+                    if(numAleatorio<=-5)
+                    {
+                        document.write(numAleatorio+" eliminar primer elemento");
+                         elimnados[i] = lista.shift(numAleatorio);
+                         document.write(eliminados.length+" tamaño del array");
+                    }
+                    else if(-5<numAleatorio<=0)
+                    {
+                        document.write(numAleatorio+" eliminar último elemento");
+                        eliminados[i]= lista.pop(numAleatorio);
+                        document.write(eliminados.length+" tamaño del array");
+                    }
+                    else if(0<numAleatorio<=10)
+                    {
+                        document.write(numAleatorio+" añadir al principio");
+                        eliminados[i]= lista.unshift(numAleatorio);
+                        document.write(eliminados.length+" tamaño del array");
+                    }
+                    else if(10<numAleatorio<=10)
+                    {
+                        document.write(numAleatorio+" añadir al final");
+                        eliminados[i]= lista.push(numAleatorio);
+                        document.write(eliminados.length+" tamaño del array");
+                    }
+
+                    document.write(eliminados.length+" tamaño del array");
+
+                }
+
+                //Enviamos (va a salir desordenado)
+                return lista;
+
+            }
+
+            document.write(listaGestion(15));
+
+
+    </script>
+
+    <br><br>
+
+    <!--
+        8. Crear una función que acepte un array y devuelva otro array con la raíz
+         cuadrada de cada elemento. Probar con un array aleatorio de 20 números entre 60 y 100.
+    -->
+
+    <script>
+
+        //Declaro array de 20 números aleatorios
+        var miLista = new Array(20);
+
+        for(var i=0;i<miLista.length;i++)
+        {
+            //Rellenemos con números
+            miLista[i]=parseInt(Math.random() * (100 - 60) + 60);
+        }
+
+        //Raíces cuadradas de los números insertados
+        function raiz(miLista)
+        {
+            var resultado=new Array(miLista.length);
+
+            for(var i=0;i<resultado.length;i++)
+            {
+                //Aplicamos la raíz cuadrada a cada número
+                resultado[i]=Math.sqrt(miLista);
+            }
+
+            return resultado;
+
+        }
+
+        document.write(raiz(miLista));
+
+    </script>
+
+    <br><br>
+
+    <!--
+        9. Crear una función que devuelva el valor máximo y mínimo del array, e indique el índice de estos
+         valores (si el valor se repite, informar sólo sobre la primera vez que aparezca). Probar con un array
+          aleatorio de 20 números entre -100 y 100.
+    -->
+
+    <script>
+
+        //Declaro array de 20 números aleatorios
+        var nuevaLista = new Array(20);
+
+        for(var i=0;i<nuevaLista.length;i++)
+        {
+            //Rellenemos con números
+            nuevaLista[i]=parseInt(Math.random() * (100 - (-100)) + (-100));
+        }
+/*
+        //Recorrer un array
+            for(var i=0; i<nuevaLista.length;i++)
+            {
+                document.write(nuevaLista[i]);
+            }*/
+
+        function lissta(nuevaLista)
+        {
+            //Valores
+            var maximo = Math.max(nuevaLista);
+            var minimo = Math.min(nuevaLista);
+
+            //Resolución
+            var respuesta = "Valor máximo es "+maximo+" y está en la posición "+nuevaLista[maximo]+
+            "\n Y el valor mínimo es "+minimo+" y está en "+nuevaLista[minimo];
+
+            return respuesta;
+        }
+
+        document.write(lissta(nuevaLista));
+
+    </script>
+
+    <br><br>
+
+    <!--
+        10. Crear un array de 50 números aleatorios enteros aleatorios entre 10 y 20. 
+        Para cada elemento, informar si es la primera vez que aparece, o si se trata de un elemento repetido.
+    -->
+
+    <script>
+
+         //Declaro array de 50 números aleatorios
+         var listaNueva = new Array(50);
+
+        for(var i=0;i<listaNueva.length;i++)
+        {
+            //Declaramos el número
+            var numero = parseInt(Math.random() * (20 - 10) + 10);
+
+            //Rellenemos con números
+            listaNueva[i]=numero;
+        }
+
+        //Copio el array
+        var listaCopiada = listaNueva.slice();
+/*
+        //Muestro el array
+        document.write(listaNueva);
+        document.write("<br>");
+        document.write(listaCopiada);*/
+
+
+
+
+    </script>
+
+    <br><br>
+
+    <!--
+        11. Modificar el ejercicio anterior para que si el número ya existía, 
+        nos indique cuántas veces había aparecido con anterioridad.
+    -->
+
+    <!--
+        12. Escribir una función que busque la cadena "arriba" en un texto.
+         La función deberá informar si encuentra o no esta cadena en el texto y,
+          si la encuentra, nos deberá mostrar el texto reemplazando "arriba" por "abajo".
+    -->
+
+    <script>
+
+        //Declaro
+        var cadena = "El gato se encontraba arriba del tejado";
+
+        function buscarArriba(cadena)
+        {
+            var respuesta;
+
+            //Busca
+            var posicion = cadena.indexOf("arriba");
+
+            //Si lo encuentra
+            if (posicion !== -1)
+                respuesta = "El gato se escontraba abajo del tejado";
+            else
+                respuesta = "No se encuentra la palabra";
+
+            return respuesta;
+
+        }
+
+        document.write(buscarArriba(cadena));
+
+    </script>
+
+    
+
+    </body>
+</html>

@@ -1,0 +1,708 @@
+<html>
+    <head>
+        <title>Ejercicios de Javascript II</title>
+        <meta charset="UTF-8">
+        <body>
+            <!--
+                1. Implementar el control de 3 variables (a, b, c) para que se muestre un mensaje de error cuando se produzca alguna de las siguientes situaciones (el mensaje de error debe indicar 
+                   qué situación(es) no se cumplieron):
+
+                    a) Al menos una de las 3 variables es negativa
+
+                    b) Las tres variables son iguales a 0
+
+                    c) Las suma de las 3 variables es mayor que 10 Y las tres variables son diferentes
+            -->
+
+            <script>
+
+                //Iniciamos las variables
+                var a = -52;
+                var b = 0;
+                var c = 0;
+
+                
+
+                function control(a,b,c)
+                {
+                    //Controlamos el retorno.
+                    var respuesta;
+
+                    // Controlamos la suma para el ejercicio c
+                    var resultado = a+b+c;
+
+
+                    if(a < 0 || b<0 || c<0)
+                    {
+                        respuesta = "Una de las variables es negativa";
+                    }
+                    else if(a == 0 && b == 0 && c == 0)
+                    {
+                        respuesta = "Las tres variables son iguales a 0.";
+                    }
+                    else if(resultado>10 && (a != b != c))
+                    {
+                        respuesta = "Error del ejercicio c";
+                    }
+                    return respuesta;
+                }
+
+                document.write(control(a,b,c));
+            </script>
+
+            <br ><br >
+
+            <!--
+                2. Diseñar una función que acepta un argumento x y que muestre los siguientes mensajes:
+
+                    a) ‘Este es muy fácil... ¡prueba otro!’, si x es 0
+
+                    b) ‘El número es par’, si x es 2, 4 ó 6
+
+                    c) ‘El número es impar’, si x es 1, 3 ó 5
+
+                    d) ‘¡¡Sólo sé contar de 0 a 6!!’, para los demás casos
+
+            -->
+
+            <script>
+                
+                //Declaro
+                var numero = 5;
+
+                function argumento(numero)
+                {
+                    //Declaro el return
+                    var respuesta;
+
+                    //En este caso tuve problemas porque cuando la variable es un número no se ponen dobles
+                    //comillas en el case.
+                    switch(numero)
+                    {
+                        case 0:
+                        respuesta = "Este es muy fácil... ¡prueba otro!";
+                        break;
+
+                        case 1:
+                        respuesta = "El número es impar";
+                        break;
+
+                        case 2:
+                        respuesta = "El número es par";
+                        break;
+
+                        case 3:
+                        respuesta = "El número es impar";
+                        break;
+
+                        case 4:
+                        respuesta = "El número es par";
+                        break;
+
+                        case 5:
+                        respuesta = "El número es impar";
+                        break;
+
+                        case 6:
+                        respuesta = "El número es par";
+                        break;
+
+                        default:
+                        respuesta = "¡¡Sólo sé contar de 0 a 6!!";
+                        break;
+
+                        
+                    }
+
+                    return respuesta;
+
+                }
+
+                document.write(argumento(numero));
+
+            </script>
+
+            <br ><br >
+
+            <!--
+                3. Realizar un bucle for que actualice una variable i y otra j de la siguiente forma:
+
+                    a) i comienza en 0, j comienza en 20
+
+                    b) El bucle debe parar cuando i sea mayor que 8 ó j sea menor que 0
+
+                    c) i se incrementa de 1 en 1, j se decrementa de 3 en 3
+
+                    d) Dentro del bucle sólo puede estar la sentencia console.log(i, j)
+            -->
+
+            <script>
+                //Declaro
+                var i,j=20;
+
+                //Bucle
+                for(i = 0; i > 8 || j < 0; i++&&j-3)
+                {
+                    console.log(i,j);
+                }
+
+            </script>
+
+            <br ><br >
+
+            <!--
+                4. En el siguiente bucle while tenemos que tener cuidado porque hay operaciones 
+                que pueden dar error (no puede haber raíces cuadradas de números negativos, ni divisiones por cero).
+
+                    let result = 1, arg1, arg2, res1, res2;
+
+                    while (result > 0) {
+
+                    arg1 = Math.random() - 0.5;
+
+                    res1 = Math.sqrt(arg1);
+
+                    arg2 = Math.random();
+
+                    res2 = res1/(arg1 + arg2);
+
+                    result = res1 + res2;
+
+                    console.log(result);
+
+                    }
+
+                    a) Cambia el bucle while usando continue y break para que si hay una 
+                    raíz cuadrada de un número negativo directamente pase a la siguiente iteración. 
+                    En el caso de haber una división por cero, el bucle debe detenerse inmediatamente.
+
+                    b) Prueba a realizar el apartado anterior sin usar ni continue ni break. ¿Es más sencillo?
+                        No, porque la página se queda cargando y no responde.
+
+                    c) Cambia el bucle while original para que se ejecute sin tener que asignar un 
+                    valor inicial a la variable result.
+            -->
+
+            <script>
+                    //Variables 
+                    let arg1, arg2, res1, res2;
+                    var result;
+
+                    //Bucle
+                    while (result > 0) {
+
+                        arg1 = Math.random() - 0.5;
+
+                        res1 = Math.sqrt(arg1);
+                        //continue; //Continue porque puede dar lugar a una raíz de un negativo
+
+                        arg2 = Math.random();
+
+                        res2 = res1/(arg1 + arg2);
+                        //break; //Puede ser una división entre 0 así que cortamos
+
+                        result = res1 + res2;
+
+                        console.log(result);
+
+                    }
+
+            </script>
+
+            <br><br>
+
+            <!--
+                5. La letra del NIF se calcula dividiendo la parte numérica (8 primeras cifras) por 23. 
+                A partir del resto de esta división se asigna una letra según su posición en la siguiente cadena:
+                 `'TRWAGMYFPDXBNJZSQVHLCKE'`.
+
+            Por ejemplo, el DNI 64253469 da como resto 2 al dividir por 23 
+            (tercera posición, ya que empieza por 0), por lo que le corresponde la letra `W`.
+
+            Implementar una función que calcule la letra a partir del número del NIF.
+            -->
+
+            <script>
+
+                //Declaramos el dni
+                var dni = 64253469;
+
+                function nif(dni)
+                {
+                    //Creamos la lista de letras
+                    var secuencia = 'TRWAGMYFPDXBNJZSQVHLCKE';
+
+                    //Dividimos entre 23 y nos quedamos con el resto para saber la posición
+                    var numero = dni % 23;
+
+                    //Buscamos la letra que necesitamos
+                    var letra = secuencia.charAt(numero);
+
+                    return letra;
+                }
+
+                document.write("El DNI "+dni+" tiene letra "+nif(dni));
+                
+            </script>
+
+            <br><br>
+
+            <!--
+                6. Para convertir grados Farenheit (`F`) a Celsius (`C`) se usa la siguiente expresión:
+                 `C = (F − 32) * 5/9`. Implementar una función que realice esta conversión
+                  (comprueba que 32ºF son 0ºC y que 75.2ºF son 24ºC).
+            -->
+
+            <script>
+
+                //Temperatura
+                var faren = 75.2;
+
+                //Valor booleano
+                var grados = false;
+
+                function conversionC(faren)
+                {
+                    var resultado;
+
+                    resultado = (faren - 32) * 5/9;
+
+                    //Configuramos el boolean
+                    grados = true;
+
+                    if(grados)
+                    {
+                        resultado = resultado+"ºC";
+                    }
+
+                    return resultado;
+                }
+
+                document.write(faren+" grados F a C "+conversionC(faren));
+
+            </script>
+
+            <br><br>
+
+            <!--
+                7. En el ejercicio anterior, añadir un argumento opcional booleano 
+                de forma que si está a `False` (valor por defecto) devuelve sólo el 
+                resultado numérico (p.ej: `24`), mientras que si se indica `True` le añade la unidad `ºC` (p.ej `24ºC`).
+            -->
+
+            <!--
+                8.Genera una lista que contenga el cuadrado de los números pares
+                 y el cubo de los impares entre 1 y 100 (inclusive).
+            -->
+
+            <script>
+
+                //Declaro
+                var i,j;
+
+                for(i=1; i<=100; i++)
+                {
+                    //Si son pares
+                    if(i%2==0)
+                    {
+                        j=i*i;
+                    }
+                    //Si son impares
+                    else{
+                        j=i*i*i;
+                    }
+
+                }
+
+                document.write(j);
+
+            </script>
+
+            <br><br>
+
+            <!--
+                9. Escribir un programa que proporcione el desglose en el número mínimo de billetes
+                 y monedas de una cantidad entera cualquiera de euros dada. Recuerda que los billetes
+                  y monedas de uso legal disponibles hasta 1 euro son de: 500, 200, 100, 50, 20, 10, 5,
+                   2 y 1 euros. Para ello deben solicitar al usuario un número entero (comprobar que lo es)
+                    y desglosar la cantidad en el número mínimo de billetes y monedas.
+            -->
+
+            <script>
+
+                //Declaro la variable con la que voy a trabajar
+                var dinero; 
+               
+                //Forzosamente se queda con la parte entera si es decimal.
+                dinero = parseInt(prompt("Ingrese una cantidad en números enteros: "));
+
+                //Inicializamos el array de los billetes
+                var monedas = [500,200,100,50,20,10,5];
+
+                //Monedas a devovler
+                var cambio=[0,0,0,0,0,0,0];
+
+                // Recorremos todas las monedas
+                for(var i=0; i<monedas.length; i++)
+                {
+                
+                    // Si el importe actual, es superior a la moneda
+                    if(dinero>=monedas[i])
+                    {
+                
+                        // Obtenemos cantidad de monedas
+                        cambio[i]=parseInt(dinero/monedas[i]);
+                
+                        // Actualizamos el valor del importe que nos queda por didivir
+                        dinero=(dinero-(cambio[i]*monedas[i])).toFixed(2);
+                    }
+                }
+
+                    // Bucle para mostrar el resultado
+                    for(i=0; i<monedas.length; i++)
+                    {
+                        if(cambio[i]>0)
+                        {
+                            if(monedas[i]>=5)
+                                document.write("Hay: "+cambio[i]+" billetes de: "+monedas[i]+" &euro;<br>");
+                            else
+                                document.write("Hay: "+cambio[i]+" monedas de: "+monedas[i]+" &euro;<br>");
+                        }
+                    }
+                
+
+            </script>
+
+            <br><br>
+
+            <!--
+                10. Muestra la fecha y hora actuales en formato: “DD/MM/YYYY hh:mm:ss TimeZone”.
+            -->
+
+            <script>
+
+                //Declaro
+                var tiempo = new Date();
+
+                document.write("Día: "+tiempo.getDate()+" Mes: "+(tiempo.getMonth()+1)+" Año: "+tiempo.getFullYear()+"\n");
+                document.write("Horas: "+tiempo.getHours()+" Minutos: "+tiempo.getMinutes()+" Segundos: "+tiempo.getSeconds());
+
+            </script>
+
+            <br><br>
+
+            <!--
+                11. Construye una fecha a partir del texto “02/04/2015”. 
+                Muestra la fecha con console.log, ¿qué obtienes?
+                Un String
+                 Prueba ahora con “2015-04-02”.¿Cómo podrías crear una fecha con el texto “April 02, 2015”?
+            -->
+
+            <script>
+
+                //Declaro
+                var fecha="02-04-2015";
+                console.log(fecha);
+                //Siempre obtengo un String
+
+            </script>
+
+            <br><br>
+
+            <!--
+                12. ¿Cuántos segundos han pasado desde que naciste? ¿y minutos?
+                 ¿y horas? ¿y días? Implementaruna función que dada
+                  una fecha cualquiera en formato “yyyy-mm-dd”, devuelva cuánto tiempo
+                   ha pasado desde esa fecha. La función aceptará un segundo parámetro
+                    para indicar en qué unidad se quiere obtener el resultado: ‘d’ → días,
+                     ‘h’ → horas, ‘m’ → minutos y ‘s’ → segundos. Si no es ninguna de estas unidades, se mostrará un error.
+            -->
+
+            <script>
+
+                //Pido información al usuario
+                var anios = parseInt(prompt("Año de nacimiento: "));
+                var mes = parseInt(prompt("Mes de nacimiento: "));
+                var dia = parseInt(prompt("Día de nacimiento: "));
+                var eleccion = prompt("¿En qué resultado lo quieres? (d,h,m,s)");
+
+                
+
+                function fecha(a,m,d,e)
+                {
+
+                //Declaro retorno
+                var respuesta;
+
+                //Declaro mi fecha de nacimiento
+                var nacimiento = new Date(a, m, d);
+                var hoy = new Date();
+
+                //Operaciones de tiempo
+                var tiempoPasado= hoy - nacimiento;
+                var segs = 1000;
+                var mins = segs * 60;
+                var hours = mins * 60;
+                var days = hours * 24;
+                var months = days * 30.416666666666668;
+                var years = months * 12;
+
+                //Calculamos el tiempo transcurrido 
+                var anos = Math.floor(tiempoPasado / years);
+
+                tiempoPasado = tiempoPasado - (anos * years);
+                var meses = Math.floor(tiempoPasado / months);
+
+                tiempoPasado = tiempoPasado - (meses * months);
+                var dias = Math.floor(tiempoPasado / days);
+
+                tiempoPasado = tiempoPasado - (dias * days);
+                var horas = Math.floor(tiempoPasado / hours);
+
+                tiempoPasado = tiempoPasado - (horas * hours);
+                var minutos = Math.floor(tiempoPasado / mins);
+
+                tiempoPasado = tiempoPasado - (minutos * mins);
+                var segundos = Math.floor(tiempoPasado / segs);
+
+                switch(e)
+                {
+                    case "d":
+                    respuesta = dias;
+                    break;
+
+                    case "h":
+                    respuesta = horas;
+                    break;
+
+                    case "m":
+                    respuesta = minutos;
+                    break;
+
+                    case "s":
+                    respuesta = segundos;
+                    break;
+
+                    default:
+                    respuesta = "No es una elección";
+                }
+
+                return respuesta;
+
+                }
+
+                document.write(fecha(anios,mes,dia,eleccion));
+
+                
+
+            </script>
+
+            <br><br>
+
+            <!--
+                13. Implementar una función hdec2hms(x) que transforme una hora en formato decimal
+                 a su equivalente en formato hh:mm:ss (en texto). 
+                 Por ejemplo, 8.25 = “8:15:00” y 10.12 = “10:07:12”.Implementar también la función inversa hms2hdec(h,m,s).
+            -->
+
+            <script>
+
+                //Declaro
+                var hora = new Date();
+
+                function hdec2hms(hora)
+                {
+                    //Respuesta
+                    var respuesta = ""+hora.getHours+":"+hora.getMinutes+":"+hora.getSeconds;
+
+                    return respuesta;
+
+                }
+
+                function hms2hdec(h,m,s)
+                {
+                    //Declaro respuesta:
+                    var respuesta = h+":"+m+":"+s;
+
+                    return respuesta;
+                }
+
+                document.write(hdec2hms(hora));
+                document.write(hms2hdec(1,25,32));
+
+
+            </script>
+
+            <br><br>
+
+            <!--
+                14. Como hemos visto, javascript, como muchos otros lenguajes, utilizan el “UNIX EPOCH” 
+                que cuenta el tiempo a partir de la medianoche del 1 de enero de 1970. Sin embargo, 
+                hay otros tipos de fecha que tienen otro origen del tiempo. Por ejemplo, la fecha juliana 
+                empieza a contabilizar el tiempo desde las 12:00 (mediodía) del 1 de enero de 4713 a.C., 
+                e indica el número de días (y fracciones) que han transcurrido desde ese momento. 
+                La fecha juliana se suele utilizar para calcular el tiempo que ha transcurrido desde 
+                eventos que sucedieron en la antigüedad y es aún ampliamente usada para fenómenos 
+                astronómicos e históricos lejanos. En la wikipedia (https://es.wikipedia.org/wiki/Fecha_juliana) 
+                se puede encontrar la relación entre fecha juliana y tiempo Unix (contado a partir desde 1/1/1970),
+                siendo esta:
+
+                fecha_juliana = tiempo_unix + 2440587.5
+
+                Implementar una función que dada una fecha en texto (por ejemplo “2018-09-20”), 
+                devuelva la fecha juliana equivalente.
+
+                Para realizar la suma, ten en cuenta que la fecha juliana almacena días, 
+                mientras que el tiempo_unix en javascript contiene milisegundos,
+                por lo que hay que transformarlo en días. Por cierto, ¿de dónde crees que ha salido el valor 2440587.5?
+
+                Se trata del número juliano del día 1/1/1970
+            -->
+
+            <script>
+                //Convierte de gregoriano a juliano
+                function gregToJul(mdy){
+
+                    //Transformamos en días
+                    var d = mdy.split("/");
+                    if (parseInt(d[1]) > 2) {
+                        d[1] = parseInt(d[1]) - 3;
+                    } else {
+                        d[1] = parseInt(d[1]) + 9;
+                        d[2] = parseInt(d[2]) - 1;
+                    }
+                    var cen = parseInt(d[2]) / 100; 
+                    var dec = parseInt(d[2]) - 100 * cen; 
+                    return parseInt((146097 * cen) / 4 + (1461 * dec) / 4 + (153 * parseInt(d[1]) 
+                    + 2) / 5 + parseInt(d[0]) + 1721119);
+
+                }
+
+                document.write(gregToJul("10/09/2011"));
+            </script>
+
+            <br><br>
+
+            <!--
+                15. Cuando hablamos de ángulos, normalmente utilizamos los grados sexagesimales 
+                (se suelen representar como “deg”, una circunferencia completa son 360º deg).
+                 Sin embargo, en trigonometría es más común utilizar los radianes 
+                 (“rad”, una circunferencia completa son 2π rad).
+
+                De esta forma, 360º equivalen a 2π. Las funciones trigonométricas de javascript,
+                como la mayoría de lenguajes, trabajan en radianes, sin embargo en muchas ocasiones
+                nosotros vamos a querer trabajaren grados. Por ello, se pide:
+
+                a) Implementar una función llamada deg2rad(x) que transforme de grados a radianes, y su inversa rad2deg(x)
+
+                b) Implementar una función sinDeg(x)que devuelva el seno del ángulo x y
+                otra función cosDeg(x) que devuelva el coseno del ángulo x (en ambos casos x está en grados).
+
+                c) El seno y el coseno están relacionados por la siguiente ecuación: sin2x + cos2x = 1.
+
+                Utilizar esta relación para implementar una función sinDegAlt(x) que obtenga 
+                el seno de un ángulo x (en grados) usando para ello la función cosDeg(x) anteriormente implementada.
+
+                Implementar también la función inversa al apartado anterior: cosDegAlt(x) usando para ello sinDeg(x)
+            -->
+
+            <script>
+
+                // Ejercicio a ->>>>>>>>>>>>>
+                //Declaro
+                var grados = 35;
+                var radianes = 80;
+
+                function gaR(grados)
+                {
+                    //Var radianes
+                    var radianes;
+
+                    //Operación
+                    radianes = (grados * Math.PI) / 180.0;
+
+                    return radianes;
+
+                }
+
+                function raG(radianes)
+                {
+                    //Var grados
+                    var grados;
+
+                    //Operación
+                    grados = (radianes * 180.0) / Math.PI;
+
+                    return grados;
+
+                }
+                
+                document.write(gaR(grados));
+                document.write(raG(radianes));
+
+                //Ejercicio b ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+                //Declaro
+                var gradosSen = 90;
+                var gradosCos = 180;
+
+                function sinDeg(grados)
+                {
+                    //Resultado
+                    var res;
+
+                    //Operación
+                    res = Math.sin(grados);
+
+                    return res;
+                }
+
+                function cosDeg(grados)
+                {
+                    //Resultado
+                    var res;
+
+                    //Operación
+                    res = Math.cos(grados);
+
+                    return res;
+                }
+
+                document.write(sinDeg(gradosSen));
+                document.write(cosDeg(gradosCos));
+
+                //Ejercicio c ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+                function sinDegAlt(grados)
+                {
+                    //Respuesta
+                    var respuesta;
+
+                    //Operación
+                    respuesta = Math.sin(cosDeg(grados));
+
+                    return respuesta;
+                }
+
+                function cosDegAlt(grados)
+                {
+                    //Respuesta
+                    var respuesta;
+
+                    //Operación
+                    respuesta = Math.cos(sinDeg(grados));
+
+                    return respuesta;
+                }
+
+                //Mostramos el resultado
+                
+                document.write(cosDegAlt(360));
+                document.write(sinDegAlt(180));
+
+
+            </script>
+
+        </body>
+    </head>
+</html>

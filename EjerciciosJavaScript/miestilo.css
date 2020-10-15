@@ -1,0 +1,40 @@
+/* Cuadro en medio de la pantalla*/
+div{
+    border: 10px solid #3EC483;
+    background: #5DEAA8;
+    height: 100px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+  }
+
+  /* Texto dentro del cuadrado*/
+  .texto
+  {
+    background-color: aqua;
+    width: 500px;       
+    height: 500px;
+    position: absolute;
+    top:50%;
+    left: 50%;           
+    margin-top: -300px;
+    margin-left: -300px;
+  }
+
+  /* Fondo de pantalla */
+  body
+  {
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+  }
+
+  /* Color del título*/
+  h1 
+  {
+    color: blue;
+  }
