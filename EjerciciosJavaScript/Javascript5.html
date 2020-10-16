@@ -1,0 +1,205 @@
+<html>
+    <head>
+        <title>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+        </title>
+        <body>
+
+            <!--
+                1-    Realiza 3 ejercicios anteriores utilizando operador ternario.
+            -->
+
+            <script>
+                
+                 //Declaro
+                 var cadena = "El gato se encontraba arriba del tejado";
+
+                    function buscarArriba(cadena)
+                    {
+                        var respuesta;
+
+                        //Busca
+                        var posicion = cadena.indexOf("arriba");
+
+                        //Si lo encuentra
+                        /*if (posicion !== -1)
+                            respuesta = "El gato se escontraba abajo del tejado";
+                        else
+                            respuesta = "No se encuentra la palabra";*/
+                        
+                        //Usando operador ternario
+                        respuesta = (posicion !== -1) ? "El gato se escontraba abajo del tejado" : "No se encuentra la palabra";
+
+                        return respuesta;
+
+                    }
+
+                    document.write(buscarArriba(cadena));
+            
+            </script>
+
+            <br><br>
+
+            <script>
+            
+            function listaNumeros(elementos)
+            {
+                //Dimensiones del array
+                var lista = new Array(elementos);
+
+                //Rellenamos
+                for(var i=0;i<elementos;i++)
+                {
+                    //Uso operador ternario
+                    lista[i] = (lista[i] != 0) ? parseInt(Math.random() * (10 - 1) + 1) : -1;
+                }
+
+                //Enviamos (va a salir desordenado)
+                return lista;
+
+            }
+
+                document.write(listaNumeros(10));
+
+            </script>
+
+            <br><br>
+
+            <script>
+                
+                function arrayOrdenado(elementos)
+            {
+                //Dimensiones del array
+                var lista = new Array(elementos);
+
+                //Rellenamos
+                for(var i=0;i<elementos;i++)
+                {
+                    //Usamos operador ternario
+                    lista[i] = (lista[i] != 0) ? parseInt(Math.random() * (100 - 20) + 20) : "Ya hay un número puesto";
+                }
+
+                //Enviamos ordenado
+                return lista.sort();
+
+            }
+
+                document.write(arrayOrdenado(20));
+            
+            </script>
+
+            <br><br>
+
+            <!--
+                2-    Realiza una función sumatoria utilizando “arguments”. Utiliza un bucle for.
+                 El usuario debe introducir 7 números. Resultado muéstralo en consola.
+            -->
+
+            <script>/*
+                
+                //Pido números
+                var numeros = new Array(7);
+
+                for(var i=0; i<numeros.length; i++)
+                {
+                    numeros[i] = parseInt(prompt("Introduce número "+(i+1)+" hasta 7 números: "));
+                }
+
+                //Lo muestro
+                console.log(sumatorio(numeros));
+
+                function sumatorio(numeros)
+                {   
+                    //Respuesta
+                    var suma=0;
+
+                    for(var i=0; i<numeros.length; i++)
+                    {
+                        suma += numeros[i];
+
+                        //Uso arguments
+                        console.log(arguments[numeros]);
+                    }
+
+                    return suma;
+
+                }
+            */
+            </script>
+
+            <br><br>
+
+            <!--
+                3-    Realiza una función que calcule la media de 5 notas introducidas por el usuario.
+                 Utiliza “arguments”. Muestra el resultado por consola.
+            -->
+
+            <script>/*
+
+                //Pido números
+                var nuevosNumeros = new Array(5);
+
+                for(var i=0; i<nuevosNumeros.length; i++)
+                {
+                    nuevosNumeros[i] = parseInt(prompt("Introduce nota "+(i+1)+" hasta 7 notas de exámenes: "));
+                }
+
+                //Lo muestro
+                console.log(media(nuevosNumeros));
+
+                function media(notas)
+                {   
+                    //Respuesta
+                    var suma=0;
+                    var media =0;
+
+                    for(var i=0; i<notas.length; i++)
+                    {
+                        suma += notas[i];
+
+                        //Uso arguments
+                        console.log(arguments[notas]);
+                    }
+
+                    media = suma/7;
+                    return media;
+
+                }
+*/
+            </script>
+
+            <br><br>
+
+            <!--
+                4-    Realiza la validación de una matrícula de un coche 0000-XXX mediante expresiones regulares.
+            -->
+
+            <script>
+
+            //Declaro la matrícula
+            var matricula = "0000-XXX";
+
+            //Llamo
+            document.write(validarM(matricula));
+
+            function validarM(matricula) 
+            {   
+                //Resultado
+                var respuesta;
+
+                //Expresión regular
+                var expreg = new RegExp("^[A-Z]{1,2}\\s\\d{4}\\s([B-D]|[F-H]|[J-N]|[P-T]|[V-Z]){3}$");
+            
+                if(expreg.test(matricula))
+                    respuesta = "La matrícula es correcta"; 
+                else 
+                    repuesta = "La matrícula NO es correcta"; 
+
+                return respuesta;
+            } 
+
+            </script>
+
+        </body>
+    </head>
+</html>
