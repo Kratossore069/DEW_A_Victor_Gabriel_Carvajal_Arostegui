@@ -179,26 +179,256 @@
             //Declaro la matrícula
             var matricula = "0000-XXX";
 
-            //Llamo
-            document.write(validarM(matricula));
-
             function validarM(matricula) 
             {   
                 //Resultado
                 var respuesta;
 
                 //Expresión regular
-                var expreg = new RegExp("^[A-Z]{1,2}\\s\\d{4}\\s([B-D]|[F-H]|[J-N]|[P-T]|[V-Z]){3}$");
+                var expreg = /^[A-Z]{1,2}\\s\\d{4}\\s([B-D]|[F-H]|[J-N]|[P-T]|[V-Z]){3}$/;
             
                 if(expreg.test(matricula))
+                {
                     respuesta = "La matrícula es correcta"; 
+                }
                 else 
-                    repuesta = "La matrícula NO es correcta"; 
+                {
+                    respuesta = "La matrícula NO es correcta"; 
+                }
 
                 return respuesta;
             } 
 
+            //Llamo
+            document.write(validarM(matricula));
+
             </script>
+
+            <br><br>
+
+            <!--
+                5-    Valida un nombre de usuario en twitter, empieza por @ y puede contener letras mayúsculas
+                 y minúsculas, números, guiones y guiones bajos.
+            -->
+
+            <script>
+
+                //Declaro el nombre
+                var nombreUsuario = "@Pedro_DevOps";
+
+                //Llamo
+                document.write(twitter(nombreUsuario));
+
+                function twitter(nombre)
+                {
+                    //Respuesta
+                    var answer;
+
+                    //Expresión
+                    var exp = /^@{1}[A-Z]*[a-z]*[1-9]*[-]*[_]*/;
+
+                    //Comprobamos
+                    if(exp.test(nombre))
+                    {
+                        answer = nombre+" Correcto";
+                    }
+                    else
+                    {
+                        answer = nombre+" Incorrecto";
+                    }
+
+                    return answer;
+
+                }
+
+            </script>
+
+            <br><br>
+
+            <!--
+                6-    Crear una expresión regular que valide una dirección de email. Para simplificar,
+                 los valores antes de la @ pueden contener cualquier carácter alfanumérico, y los caracteres
+                  . y -, mientras que los valores tras la @ pueden contener caracteres alfanuméricos, y
+                   el tipo de dominio puede tener una longitud de 2 o 3 caracteres.
+            -->
+
+            <script>
+
+                //Declaro
+                var email = "eustaquio@gmail.es";
+
+                //Llamo
+                document.write(correo(email));
+
+                function correo(correo)
+                {
+                    //Respuesta
+                    var answer;
+
+                    //Expresión
+                    var exp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+                    //Valido
+                    if(exp.test(correo))
+                    {
+                        answer = correo+" válido";
+                    }
+                    else
+                    {
+                        answer = correo+" no permitido";
+                    }
+
+                    return answer;
+                }
+
+                
+
+            </script>
+
+            <br><br>
+
+            <!--
+                7-    Crear una expresión regular valide una fecha en formato "XX/XX/XXXX", 
+                donde "X" es un dígito. Probarlo con la expresión: "Nací el 05/04/1982 en Donostia.".
+            -->
+
+            <script>
+
+                //Declaro
+                var fecha = "09/11/1994";
+
+                //Llamo
+                document.write(formatoFecha(fecha));
+
+                function formatoFecha(fecha)
+                {
+                    //Respuesta
+                    var answer;
+
+                    //Expresión
+                    var RegExPattern = /^\d{1,2}\/\d{1,2}\/\d{2,4}$/;
+
+                    if(RegExPattern.test(fecha))
+                    {
+                        answer = "Nací el "+fecha+" en Donostia";
+                    }
+                    else
+                    {
+                        answer = "Fecha equivocada";
+                    }
+
+                    return answer;
+
+                }
+
+            </script>
+
+            <br><br>
+
+            <!--
+                8-    Realiza 3 ejercicios anteriores utilizando funciones anónimas.
+            -->
+
+            <script>
+
+                //Llamo a la función anónima
+                    var fecha = function(fecha)
+                    {
+                        //Respuesta
+                        var answer;
+
+                        //Expresión
+                        var RegExPattern = /^\d{1,2}\/\d{1,2}\/\d{2,4}$/;
+
+                        if(RegExPattern.test(fecha))
+                        {
+                            answer = "Nací el "+fecha+" en Donostia";
+                        }
+                        else
+                        {
+                            answer = "Fecha equivocada";
+                        }
+
+                        return answer;
+
+                    };
+
+                //Declaro la llamada
+                var funcionFecha = fecha("09/11/1994");
+
+                document.write(funcionFecha);
+                
+
+
+            </script>
+
+            <br><br>
+
+            <script>
+
+                //Variable
+                var emailValido = function(correo)
+                {
+                    //Respuesta
+                    var answer;
+
+                    //Expresión
+                    var exp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+                    //Valido
+                    if(exp.test(correo))
+                    {
+                        answer = correo+" válido";
+                    }
+                    else
+                    {
+                        answer = correo+" no permitido";
+                    }
+
+                    return answer;
+                };
+
+                //Declaro
+                var verificar = emailValido("tomasdiablito@hotmail.sexy");
+
+                //Llamo
+                document.write(verificar);
+
+            </script>
+
+            <br><br>
+
+            <script>
+
+                //Declaro
+                var nombreTwitter = function(nombre)
+                {
+                    //Respuesta
+                    var answer;
+
+                    //Expresión
+                    var exp = /^@{1}[A-Z]*[a-z]*[1-9]*[-]*[_]*/;
+
+                    //Comprobamos
+                    if(exp.test(nombre))
+                    {
+                        answer = nombre+" Correcto";
+                    }
+                    else
+                    {
+                        answer = nombre+" Incorrecto";
+                    }
+
+                    return answer;
+
+                };
+
+                //Muestro y envío información en la misma línea, no como los otros dos
+                document.write(nombreTwitter("@CachopoAsesino"));
+
+            </script>
+
+            <br><br>
 
         </body>
     </head>
