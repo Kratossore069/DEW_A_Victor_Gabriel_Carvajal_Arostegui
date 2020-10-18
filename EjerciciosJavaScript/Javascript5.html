@@ -95,7 +95,7 @@
                  El usuario debe introducir 7 números. Resultado muéstralo en consola.
             -->
 
-            <script>/*
+            <script>
                 
                 //Pido números
                 var numeros = new Array(7);
@@ -124,7 +124,7 @@
                     return suma;
 
                 }
-            */
+            
             </script>
 
             <br><br>
@@ -134,7 +134,7 @@
                  Utiliza “arguments”. Muestra el resultado por consola.
             -->
 
-            <script>/*
+            <script>
 
                 //Pido números
                 var nuevosNumeros = new Array(5);
@@ -165,7 +165,7 @@
                     return media;
 
                 }
-*/
+
             </script>
 
             <br><br>
@@ -425,6 +425,98 @@
 
                 //Muestro y envío información en la misma línea, no como los otros dos
                 document.write(nombreTwitter("@CachopoAsesino"));
+
+            </script>
+
+            <br><br>
+
+            <!--
+                9-    Analiza los diferentes métodos de string y crea 3 ejercicios aplicados donde el usuario deba intervenir.
+            -->
+
+            <script>
+
+                //Length
+                alert("Adivinar cuántas 'a' hay en la siguiente frase");
+
+                var frase = "Ayer hubo una tormenta";
+
+                var respuesta = parseInt(prompt("¿Cuántas 'a' hay en ?"+frase));
+
+                if(respuesta == 3)
+                {
+                    document.write("Acertaste");
+                }
+                else
+                {
+                    document.write("Fallaste");
+                }
+
+                //CharAt
+                alert("En la frase 'dubidubidú', ¿cuál es la 5 letra?");
+                var frase2 = "dubidubidú";
+                var posicion = frase.charAt(4);
+                var answer =  prompt("Respuesta ");
+
+                if(answer == posicion)
+                {
+                    document.write("Acertaste");
+                }
+                else
+                {
+                    document.write("Fallaste");
+                }
+
+                //Replace
+                alert("Cambia la palabra 'gato' por otra que quieras");
+                alert("El gato estaba en la cama");
+
+                var frase3 = "El gato estaba en la cama";
+                var cambio = prompt("Palabra");
+
+                var cambiado = frase3.replace("gato",cambio);
+
+                document.write(cambiado);
+
+
+            </script>
+
+            <br><br>
+            
+            <!--
+                10-  Analiza los diferentes métodos de arrays y crea 3 ejercicios aplicados donde el usuario deba intervenir.
+            -->
+
+            <script>
+
+                //Pop borra el último punto del array, push añade nuevos términos y reverse invierte el orden.
+
+                var fila = ["Pan","con","Nocilla"];
+
+                //Muestra el array
+                alert(fila);
+
+                var intriga = prompt("¿Qué hacer con esta cadena? ¿Pop, push ó reverse?");
+
+                switch(intriga)
+                {
+                    case "pop":
+                        //Saca el último punto del array
+                        var casoPop = fila.pop();
+                        document.write(casoPop);
+                    break;
+
+                    case "push":
+                        var añadiendo = prompt("Nueva palabra dentro del array");
+                        var añadido = fila.push(añadiendo);
+                        //Devuelve la longitud del array
+                        document.write(añadido);
+                    break;
+
+                    case "reverse":
+                        document.write(fila.reverse());
+                    break;
+                }
 
             </script>
 
