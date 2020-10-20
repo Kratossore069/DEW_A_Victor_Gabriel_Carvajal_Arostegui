@@ -1,0 +1,679 @@
+<html>
+    <head>
+        <title>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+        </title>
+        <body>
+
+             <!--
+                1-    Realiza 3 ejercicios anteriores utilizando operador ternario.
+            -->
+
+            <script>
+                
+                //Declaro
+                var cadena = "El gato se encontraba arriba del tejado";
+
+                   function buscarArriba(cadena)
+                   {
+                       var respuesta;
+
+                       //Busca
+                       var posicion = cadena.indexOf("arriba");
+
+                       //Si lo encuentra
+                       /*if (posicion !== -1)
+                           respuesta = "El gato se escontraba abajo del tejado";
+                       else
+                           respuesta = "No se encuentra la palabra";*/
+                       
+                       //Usando operador ternario
+                       respuesta = (posicion !== -1) ? "El gato se escontraba abajo del tejado" : "No se encuentra la palabra";
+
+                       return respuesta;
+
+                   }
+
+                   document.write(buscarArriba(cadena));
+           
+           </script>
+
+           <br><br>
+
+           <script>
+           
+           function listaNumeros(elementos)
+           {
+               //Dimensiones del array
+               var lista = new Array(elementos);
+
+               //Rellenamos
+               for(var i=0;i<elementos;i++)
+               {
+                   //Uso operador ternario
+                   lista[i] = (lista[i] != 0) ? parseInt(Math.random() * (10 - 1) + 1) : -1;
+               }
+
+               //Enviamos (va a salir desordenado)
+               return lista;
+
+           }
+
+               document.write(listaNumeros(10));
+
+           </script>
+
+           <br><br>
+
+           <script>
+               
+               function arrayOrdenado(elementos)
+           {
+               //Dimensiones del array
+               var lista = new Array(elementos);
+
+               //Rellenamos
+               for(var i=0;i<elementos;i++)
+               {
+                   //Usamos operador ternario
+                   lista[i] = (lista[i] != 0) ? parseInt(Math.random() * (100 - 20) + 20) : "Ya hay un número puesto";
+               }
+
+               //Enviamos ordenado
+               return lista.sort();
+
+           }
+
+               document.write(arrayOrdenado(20));
+           
+           </script>
+
+           <br><br>
+
+           <!--
+               2-    Realiza una función sumatoria utilizando “arguments”. Utiliza un bucle for.
+                El usuario debe introducir 7 números. Resultado muéstralo en consola.
+           -->
+
+           <script>
+               
+               //Pido números
+               var numeros = new Array(7);
+
+               for(var i=0; i<numeros.length; i++)
+               {
+                   numeros[i] = parseInt(prompt("Introduce número "+(i+1)+" hasta 7 números: "));
+               }
+
+               //Lo muestro
+               console.log(sumatorio(numeros));
+
+               function sumatorio(numeros)
+               {   
+                   //Respuesta
+                   var suma=0;
+
+                   for(var i=0; i<numeros.length; i++)
+                   {
+                       suma += numeros[i];
+
+                       //Uso arguments
+                       console.log(arguments[numeros]);
+                   }
+
+                   return suma;
+
+               }
+           
+           </script>
+
+           <br><br>
+
+           <!--
+               3-    Realiza una función que calcule la media de 5 notas introducidas por el usuario.
+                Utiliza “arguments”. Muestra el resultado por consola.
+           -->
+
+           <script>
+
+               //Pido números
+               var nuevosNumeros = new Array(5);
+
+               for(var i=0; i<nuevosNumeros.length; i++)
+               {
+                   nuevosNumeros[i] = parseInt(prompt("Introduce nota "+(i+1)+" hasta 7 notas de exámenes: "));
+               }
+
+               //Lo muestro
+               console.log(media(nuevosNumeros));
+
+               function media(notas)
+               {   
+                   //Respuesta
+                   var suma=0;
+                   var media =0;
+
+                   for(var i=0; i<notas.length; i++)
+                   {
+                       suma += notas[i];
+
+                       //Uso arguments
+                       console.log(arguments[notas]);
+                   }
+
+                   media = suma/7;
+                   return media;
+
+               }
+
+           </script>
+
+           <br><br>
+
+           <!--
+               4-    Realiza la validación de una matrícula de un coche 0000-XXX mediante expresiones regulares.
+           -->
+
+           <script>
+
+           //Declaro la matrícula
+           var matricula = "0000-XXX";
+
+           function validarM(matricula) 
+           {   
+               //Resultado
+               var respuesta;
+
+               //Expresión regular
+               var expreg = /^[A-Z]{1,2}\\s\\d{4}\\s([B-D]|[F-H]|[J-N]|[P-T]|[V-Z]){3}$/;
+           
+               if(expreg.test(matricula))
+               {
+                   respuesta = "La matrícula es correcta"; 
+               }
+               else 
+               {
+                   respuesta = "La matrícula NO es correcta"; 
+               }
+
+               return respuesta;
+           } 
+
+           //Llamo
+           document.write(validarM(matricula));
+
+           </script>
+
+           <br><br>
+
+           <!--
+               5-    Valida un nombre de usuario en twitter, empieza por @ y puede contener letras mayúsculas
+                y minúsculas, números, guiones y guiones bajos.
+           -->
+
+           <script>
+
+               //Declaro el nombre
+               var nombreUsuario = "@Pedro_DevOps";
+
+               //Llamo
+               document.write(twitter(nombreUsuario));
+
+               function twitter(nombre)
+               {
+                   //Respuesta
+                   var answer;
+
+                   //Expresión
+                   var exp = /^@{1}[A-Z]*[a-z]*[1-9]*[-]*[_]*/;
+
+                   //Comprobamos
+                   if(exp.test(nombre))
+                   {
+                       answer = nombre+" Correcto";
+                   }
+                   else
+                   {
+                       answer = nombre+" Incorrecto";
+                   }
+
+                   return answer;
+
+               }
+
+           </script>
+
+           <br><br>
+
+           <!--
+               6-    Crear una expresión regular que valide una dirección de email. Para simplificar,
+                los valores antes de la @ pueden contener cualquier carácter alfanumérico, y los caracteres
+                 . y -, mientras que los valores tras la @ pueden contener caracteres alfanuméricos, y
+                  el tipo de dominio puede tener una longitud de 2 o 3 caracteres.
+           -->
+
+           <script>
+
+               //Declaro
+               var email = "eustaquio@gmail.es";
+
+               //Llamo
+               document.write(correo(email));
+
+               function correo(correo)
+               {
+                   //Respuesta
+                   var answer;
+
+                   //Expresión
+                   var exp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+                   //Valido
+                   if(exp.test(correo))
+                   {
+                       answer = correo+" válido";
+                   }
+                   else
+                   {
+                       answer = correo+" no permitido";
+                   }
+
+                   return answer;
+               }
+
+               
+
+           </script>
+
+           <br><br>
+
+           <!--
+               7-    Crear una expresión regular valide una fecha en formato "XX/XX/XXXX", 
+               donde "X" es un dígito. Probarlo con la expresión: "Nací el 05/04/1982 en Donostia.".
+           -->
+
+           <script>
+
+               //Declaro
+               var fecha = "09/11/1994";
+
+               //Llamo
+               document.write(formatoFecha(fecha));
+
+               function formatoFecha(fecha)
+               {
+                   //Respuesta
+                   var answer;
+
+                   //Expresión
+                   var RegExPattern = /^\d{1,2}\/\d{1,2}\/\d{2,4}$/;
+
+                   if(RegExPattern.test(fecha))
+                   {
+                       answer = "Nací el "+fecha+" en Donostia";
+                   }
+                   else
+                   {
+                       answer = "Fecha equivocada";
+                   }
+
+                   return answer;
+
+               }
+
+           </script>
+
+           <br><br>
+
+           <!--
+               8-    Realiza 3 ejercicios anteriores utilizando funciones anónimas.
+           -->
+
+           <script>
+
+               //Llamo a la función anónima
+                   var fecha = function(fecha)
+                   {
+                       //Respuesta
+                       var answer;
+
+                       //Expresión
+                       var RegExPattern = /^\d{1,2}\/\d{1,2}\/\d{2,4}$/;
+
+                       if(RegExPattern.test(fecha))
+                       {
+                           answer = "Nací el "+fecha+" en Donostia";
+                       }
+                       else
+                       {
+                           answer = "Fecha equivocada";
+                       }
+
+                       return answer;
+
+                   };
+
+               //Declaro la llamada
+               var funcionFecha = fecha("09/11/1994");
+
+               document.write(funcionFecha);
+               
+
+
+           </script>
+
+           <br><br>
+
+           <script>
+
+               //Variable
+               var emailValido = function(correo)
+               {
+                   //Respuesta
+                   var answer;
+
+                   //Expresión
+                   var exp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+                   //Valido
+                   if(exp.test(correo))
+                   {
+                       answer = correo+" válido";
+                   }
+                   else
+                   {
+                       answer = correo+" no permitido";
+                   }
+
+                   return answer;
+               };
+
+               //Declaro
+               var verificar = emailValido("tomasdiablito@hotmail.sexy");
+
+               //Llamo
+               document.write(verificar);
+
+           </script>
+
+           <br><br>
+
+           <script>
+
+               //Declaro
+               var nombreTwitter = function(nombre)
+               {
+                   //Respuesta
+                   var answer;
+
+                   //Expresión
+                   var exp = /^@{1}[A-Z]*[a-z]*[1-9]*[-]*[_]*/;
+
+                   //Comprobamos
+                   if(exp.test(nombre))
+                   {
+                       answer = nombre+" Correcto";
+                   }
+                   else
+                   {
+                       answer = nombre+" Incorrecto";
+                   }
+
+                   return answer;
+
+               };
+
+               //Muestro y envío información en la misma línea, no como los otros dos
+               document.write(nombreTwitter("@CachopoAsesino"));
+
+           </script>
+
+           <br><br>
+
+           <!--
+               9-    Analiza los diferentes métodos de string y crea 3 ejercicios aplicados donde el usuario deba intervenir.
+           -->
+
+           <script>
+
+               //Length
+               alert("Adivinar cuántas 'a' hay en la siguiente frase");
+
+               var frase = "Ayer hubo una tormenta";
+
+               var respuesta = parseInt(prompt("¿Cuántas 'a' hay en ?"+frase));
+
+               if(respuesta == 3)
+               {
+                   document.write("Acertaste");
+               }
+               else
+               {
+                   document.write("Fallaste");
+               }
+
+               //CharAt
+               alert("En la frase 'dubidubidú', ¿cuál es la 5 letra?");
+               var frase2 = "dubidubidú";
+               var posicion = frase.charAt(4);
+               var answer =  prompt("Respuesta ");
+
+               if(answer == posicion)
+               {
+                   document.write("Acertaste");
+               }
+               else
+               {
+                   document.write("Fallaste");
+               }
+
+               //Replace
+               alert("Cambia la palabra 'gato' por otra que quieras");
+               alert("El gato estaba en la cama");
+
+               var frase3 = "El gato estaba en la cama";
+               var cambio = prompt("Palabra");
+
+               var cambiado = frase3.replace("gato",cambio);
+
+               document.write(cambiado);
+
+
+           </script>
+
+           <br><br>
+           
+           <!--
+               10-  Analiza los diferentes métodos de arrays y crea 3 ejercicios aplicados donde el usuario deba intervenir.
+           -->
+
+           <script>
+
+               //Pop borra el último punto del array, push añade nuevos términos y reverse invierte el orden.
+
+               var fila = ["Pan","con","Nocilla"];
+
+               //Muestra el array
+               alert(fila);
+
+               var intriga = prompt("¿Qué hacer con esta cadena? ¿Pop, push ó reverse?");
+
+               switch(intriga)
+               {
+                   case "pop":
+                       //Saca el último punto del array
+                       var casoPop = fila.pop();
+                       document.write(casoPop);
+                   break;
+
+                   case "push":
+                       var añadiendo = prompt("Nueva palabra dentro del array");
+                       var añadido = fila.push(añadiendo);
+                       //Devuelve la longitud del array
+                       document.write(añadido);
+                   break;
+
+                   case "reverse":
+                       document.write(fila.reverse());
+                   break;
+               }
+
+           </script>
+
+           <br><br>
+       
+           <!--
+               11 - Realiza un programa para probar si el primer carácter de una cadena introducida por el usuario está en mayúsculas o no.
+           -->
+
+           <script>
+
+               //Pido información
+               var pidoInfo = prompt("Escriba una palabra: ");
+
+               //Opero
+               var camelCase = function(palabra)
+               {
+                   //Resultado
+                   var respuesta;
+
+                   //La primera letra
+                   var letra = palabra.charAt(0);
+
+                   if(letra == letra.toLowerCase())
+                   {
+                       respuesta = "Minúscula";
+                   }
+                   else
+                   {
+                       respuesta = "Mayúscula";
+                   }
+
+                   return respuesta;
+               };
+
+               document.write(camelCase(pidoInfo));
+               
+           </script>
+
+           <br><br>
+
+           
+
+            <!--
+                12 - Realiza un script para buscar una fecha dentro de una cadena introducida por el usuario.
+            -->
+
+            <script>
+
+                //Pido
+                var introduceFecha = prompt("Introduzca una frase que contenga una fecha de esta forma /d/m/a");
+
+                var verificarFecha = function(cadena)
+                {
+
+                    //Retorno
+                    var retorno;
+
+                    //Expresión regular
+                    var exp = /[0-9]{1,2}[/][0-9]{1,2}[/][0-9]{4}/;
+
+                    if(exp.test(cadena))
+                    {
+                        retorno = "Hay una fecha";
+                    }
+                    else
+                    {
+                        retorno = "No hay fecha";
+                    }
+
+                    return retorno;
+
+                };
+
+                document.write(verificarFecha(introduceFecha));
+
+            </script>
+
+            <br><br>
+
+            <!--
+                13-   Escriba un programa para contar el número de palabras en una cadena.
+
+                    Nota :
+                    - Elimine los espacios en blanco de la posición inicial y final.
+                    - Convierta 2 o más espacios en 1.
+                    - Excluya la nueva línea con un espaciado inicial.
+            -->
+
+            <script>
+
+                //Pedimos el texto
+                var textito = prompt("Escriba una frase cualquiera: ");
+
+                var transformar = function(cadena)
+                {
+                    //Quitamos los espacios en blanco de principio y final
+                    cadena = cadena.replace(/^ /,"");
+                    cadena = cadena.replace(/ $/,"");
+
+                    //Reemplazamos los espacios por uno solo
+                    cadena = cadena.replace(/[ ]+/g," ");
+
+                    //Troceamos el texto
+                    var textoPartes = cadena.split(" ");
+
+                    //Contamos las palabras
+                    var palabras = textoPartes.length;
+
+                    return palabras;
+                    
+                };
+
+                document.write(transformar(textito));
+
+            </script>
+
+            <br><br>
+
+            <!--
+                14-    Escriba una función para verificar si un valor dado por el usuario es un valor de IP o no.
+                 El usuario puede incluir IP v4 o IP v6. Debe mostrase un resultado e indicar si es IP v4 o IP v6
+            -->
+
+            <script>
+
+                //Pedimos info
+                var direccion = prompt("Escriba dirección IPv4 ó IPv6");
+
+                function redCisco(cadena)
+                {
+                    var retorno; 
+                    //Expresiones regulares
+                    var ipv4= /[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/;
+                    var ipv6 = /[A-Z0-9]{4}:[A-Z0-9]{4}:[A-Z0-9]{4}:[A-Z0-9]{4}:[A-Z0-9]{4}:[A-Z0-9]{4}:[A-Z0-9]{4}:[A-Z0-9]{4}/;
+
+                    //Comprobamos
+                    if(ipv4.test(cadena))
+                    {
+                        retorno = "Es una dirección IPv4";
+                    }
+                    else if(ipv6.test(cadena))
+                    {
+                        retorno = "Es una dirección IPv6";
+                    }
+                    else
+                    {
+                        retorno = "Dirección no válida";
+                    }
+
+                    return retorno;
+                }
+
+                document.write(redCisco(direccion));
+
+            </script>
+
+        </body>
+    </head>
+</html>
