@@ -1,0 +1,171 @@
+<html>
+    <head>
+        <title>
+            Ejercicio de clase número 5
+        </title>
+        <body>
+            <!--
+                ACTIVIDAD 1
+
+                    Crea un script donde se realicen las siguientes acciones:
+
+                    a) Pedir al usuario un nombre de titular, apellidos de titular y saldo de la cuenta.
+
+                    b) Crear un nuevo objeto cuentaBancaria que se inicializará con los datos facilitados por el usuario. 
+
+                    c) Mostrar un mensaje informando de que se ha creado la nueva cuenta bancaria y de los datos asociados a la cuenta bancaria creada.
+            -->
+            <script>
+
+
+                //Creamos el objeto
+                function cuentaBancaria(titular,apellido,saldo)
+                {
+                    this.titular = titular;
+                    this.apellido = apellido;
+                    this.saldo = saldo;
+                }
+
+                //Pedimos información
+                var nombre = prompt("Nombre del titular");
+                var apellido = prompt("Apellido del titular");
+                var saldo = parseInt(prompt("Saldo del titular"));
+
+                //Llevamos la información al objeto
+                var cuentaSalarial = new cuentaBancaria(nombre,apellido,saldo);
+
+                //Mostramos la info
+                document.write("Se ha creado una nueva cuenta con los datos: </br>"+Object.keys(cuentaSalarial)+"</br>"+Object.values(cuentaSalarial));
+
+
+            </script>
+
+            <br><br>
+
+            <!--
+                Vamos a crear una pequeña base de datos de viajeros para una agencia de viajes:
+
+                Crea una estructura para guardar los datos de personas (nombre, apellidos, edad)
+                
+                A partir de la estructura anterior, vamos a añadir los datos de los viajeros: una lista de países visitados (los países NO se pueden repetir) y si 
+                tiene o no tarjeta de puntos en nuestra agencia 
+                
+                Ahora crea otra estructura para guardar los datos de los viajeros, los identificaremos por un código de cliente de nuestra agencia
+                
+                Crea las siguientes funciones/métodos para gestionar nuestra base de datos:
+                    Crear un nuevo viajero (debe comprobar si el código de cliente ya existe. Si es así, muestra un mensaje y no lo inserta)
+                    Eliminar un viajero (identificado por su código de cliente)
+                    Mostrar todos los viajeros (sus datos personales, qué países ha visitado y si tiene tarjeta)
+                    Añadir un país a un viajero (identificado por su código de cliente)
+                    Eliminar un país a un viajero (identificado por su código de cliente)
+                    
+                Haz algunas pruebas para comprobar que todo funciona bien, realizando llamadas a las funciones/métodos antes creados.
+            -->
+
+            <script>
+
+                //Creamos el objeto
+                function Personas(nombre,ape,edad)
+                {
+                    this.nombre = nombre;
+                    this.apellido = ape;
+                    this.edad = edad;
+
+                    this.viajero = 
+                    {
+                        codigo: new Array(10),
+                        paises: new Array(10),
+                        puntos: false
+                    };
+
+                    //Función que muestra todos los datos
+                    var mostrarViajeros = function()
+                    {
+                        return this.nombre+" "+this.apellido+" "+this.edad+" "+this.viajero.codigo+" "
+                        +this.viajero.paises+" "+this.viajero.puntos;
+                    };
+
+                }
+
+                //Operaciones de gestión de usuarios
+                function Gestion(eleccion)
+                {
+                    this.elegir = eleccion;
+
+                    //Métodos
+                    switch(eleccion)
+                    {
+                        case "crear":
+                            var id = prompt("Codigo del nuevo viajero");
+                            if(Personas.viajero.codigo.find(elemento => elemento == id))
+                            {
+                                document.write("Este viajero ya existe en la base de datos");
+                            }
+                            else
+                            {
+                                Personas.viajero.codigo.push(id);
+                            }
+                        break;
+
+                        //Desdoble de posibilidades
+                        case "eliminar":
+
+                            var elimino = prompt("¿País o viajero?");
+                            
+                            //Muestro opciones
+                            switch(elimino)
+                            {
+                                case "pais":
+                                var idViajero = prompt("Código del viajero");
+                                if(Personas.viajero.codigo.find(elemento => elemento == idViajero))
+                                {
+                                var quitarPais = prompt("Eliminar el país: ");
+                                Personas.viajero.paises.splice(quitarPais,1);
+                                }
+                            else
+                            {
+                                document.write("Este viajero no existe en la base de datos");
+                                
+                            }
+                                break;
+
+                                case "viajero":
+                                    var eliminando = prompt("Inserte el código del viajero para eliminar");
+                                    Personas.viajero.codigo.splice(eliminando,1);
+                                break;
+                            }
+
+                        break;
+
+                        case "mostrar":
+                            Personas.mostrarViajeros();
+                        break;
+
+                        case "añadir":
+                            var añadiendo = prompt("Código del viajero");
+                            if(Personas.viajero.codigo.find(elemento => elemento == añadiendo))
+                            {
+                                var paisVacaciones = prompt("Añadir el país: ");
+                                Personas.viajero.paises.push(paisVacaciones);
+                            }
+                            else
+                            {
+                                document.write("Este viajero no existe en la base de datos");
+                                
+                            }
+                        break;
+                    }
+                }
+
+                //Pruebas
+                var nuevoViajero = new Personas("Victor","Faustino",15);
+
+                document.write(Personas.mostrarViajeros;
+
+
+            </script>
+
+
+        </body>
+    </head>
+</html>
